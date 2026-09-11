@@ -1,0 +1,89 @@
+<div id="botmemory_settings" class="botmemory_block">
+    <div class="inline-drawer">
+        <div class="inline-drawer-toggle inline-drawer-header">
+            <b>BotMemory — файловая память</b>
+            <div class="inline-drawer-icon fa-solid fa-circle-chevron-down down"></div>
+        </div>
+        <div class="inline-drawer-content">
+            <small class="botmemory_hint">
+                Бот сам читает и пишет файлы памяти, когда считает их релевантными.
+                В контексте постоянно только оглавление (INDEX). Требуется серверный
+                плагин botmemory (enableServerPlugins: true).
+            </small>
+
+            <label class="checkbox_label" for="botmemory_enabled">
+                <input id="botmemory_enabled" type="checkbox" />
+                <span>Включено</span>
+            </label>
+
+            <label for="botmemory_tagmode">Протокол тегов (для моделей без function calling)</label>
+            <select id="botmemory_tagmode" class="text_pole">
+                <option value="auto">Авто (теги, если API без FC)</option>
+                <option value="always">Всегда теги</option>
+                <option value="never">Никогда (только FC)</option>
+            </select>
+
+            <label class="checkbox_label" for="botmemory_hidetraces">
+                <input id="botmemory_hidetraces" type="checkbox" />
+                <span>Скрывать следы памяти в чате (пилюли и вызовы инструментов)</span>
+            </label>
+
+            <div class="botmemory_grid">
+                <label for="botmemory_indexmax">Лимит INDEX, символов</label>
+                <input id="botmemory_indexmax" type="number" class="text_pole" min="200" max="20000" step="100" />
+                <label for="botmemory_depth">Глубина вставки (depth)</label>
+                <input id="botmemory_depth" type="number" class="text_pole" min="0" max="10" step="1" />
+            </div>
+
+            <label for="botmemory_protocol">Текст протокола тегов</label>
+            <textarea id="botmemory_protocol" class="text_pole" rows="8"></textarea>
+
+            <hr />
+
+            <b>Консолидация: лог → файлы памяти</b>
+            <small class="botmemory_hint">
+                Прогоняет диапазон сообщений через модель и пишет максимально
+                полную выжимку (таймлайн, персонажи, мир) в файлы. Разово дорого,
+                зато потом старые сообщения можно скрыть из контекста — стоячей
+                останется только оглавление-инъекция (INDEX). Слэш: /bm-consolidate 0 60 hide=true
+            </small>
+            <small id="botmemory_watermark" class="botmemory_status"></small>
+            <div class="botmemory_row">
+                <input id="botmemory_cfrom" class="text_pole" type="number" min="0" placeholder="с (0)" />
+                <input id="botmemory_cto" class="text_pole" type="number" min="0" placeholder="по (предпосл.)" />
+                <label class="checkbox_label" for="botmemory_chide" title="Скрыть обработанные сообщения из промпта">
+                    <input id="botmemory_chide" type="checkbox" checked />
+                    <span>скрыть</span>
+                </label>
+                <div id="botmemory_consolidate" class="menu_button">Выжать</div>
+            </div>
+            <label for="botmemory_cprompt">Шаблон консолидации (плейсхолдеры: {{index}} {{memory}} {{log}} {{from}} {{to}})</label>
+            <textarea id="botmemory_cprompt" class="text_pole" rows="6"></textarea>
+            <label for="botmemory_cjb">Анти-цензура для выжимки (уходит в system; пресетный джейлбрейк сюда не доходит)</label>
+            <textarea id="botmemory_cjb" class="text_pole" rows="3"></textarea>
+            <label for="botmemory_cprefill">Префилл ответа (только для пути «текущее подключение»)</label>
+            <textarea id="botmemory_cprefill" class="text_pole" rows="2"></textarea>
+
+            <hr />
+
+            <b>Файлы памяти персонажа</b>
+            <div id="botmemory_files" class="botmemory_files"></div>
+            <div id="botmemory_repack_all" class="menu_button" title="Пройтись по ВСЕМ файлам: слить дубли и мелкие фрагменты, разобрать свалки. Хорошо организованные файлы не тронет.">🗜 Перепаковать всю память</div>
+
+            <div class="botmemory_row">
+                <input id="botmemory_newname" class="text_pole" type="text" placeholder="новый-файл.md" />
+                <div id="botmemory_new" class="menu_button">Создать</div>
+            </div>
+
+            <textarea id="botmemory_editor" class="text_pole" rows="10" placeholder="Выбери файл слева или создай новый"></textarea>
+
+            <div class="botmemory_row">
+                <div id="botmemory_save" class="menu_button">Сохранить</div>
+                <div id="botmemory_delete" class="menu_button danger">Удалить</div>
+            </div>
+
+            <small id="botmemory_status" class="botmemory_status"></small>
+        </div>
+    </div>
+    <hr class="sysHR" />
+</div>

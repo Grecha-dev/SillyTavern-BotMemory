@@ -1,0 +1,11 @@
+{
+    "display_name": "BotMemory — file-based memory",
+    "loading_order": 16,
+    "requires": [],
+    "optional": [],
+    "js": "index.js",
+    "css": "style.css",
+    "author": "QuestTavern project",
+    "version": "0.2.0",
+    "homePage": "https://github.com/Grecha-dev/SillyTavern-BotMemory"
+}

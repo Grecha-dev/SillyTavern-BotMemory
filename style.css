@@ -1,0 +1,205 @@
+.botmemory_block .inline-drawer-content {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.botmemory_hint {
+    opacity: 0.75;
+    display: block;
+}
+
+.botmemory_grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px 10px;
+    align-items: center;
+}
+
+.botmemory_grid label {
+    margin: 0;
+}
+
+.botmemory_files {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    max-height: 180px;
+    overflow-y: auto;
+    border: 1px solid var(--SmartThemeBorderColor, #444);
+    border-radius: 6px;
+    padding: 4px;
+}
+
+.botmemory_file {
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-family: monospace;
+    font-size: 0.9em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.botmemory_file:hover {
+    background: var(--SmartThemeBlurTintColor, rgba(255, 255, 255, 0.08));
+}
+
+.botmemory_file.active {
+    background: var(--SmartThemeBlurTintColor, rgba(255, 255, 255, 0.15));
+    font-weight: bold;
+}
+
+.botmemory_row {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.botmemory_row .text_pole {
+    flex: 1;
+}
+
+#botmemory_delete.danger {
+    --menuButtonBG: #8a3030;
+}
+
+.botmemory_status {
+    min-height: 1.2em;
+    opacity: 0.8;
+    display: block;
+}
+
+#botmemory_protocol,
+#botmemory_editor {
+    font-family: monospace;
+    font-size: 0.85em;
+}
+
+/* --- Плашка в меню «палочки» --- */
+#botmemory_wandpanel {
+    /* позиция задаётся инлайном из JS (мобильная раскладка ST ломает bottom-якорение) */
+    background: var(--SmartThemeBlurTintColor, rgba(18, 18, 24, 0.96));
+    border: 1px solid var(--SmartThemeBorderColor, rgba(255, 255, 255, 0.2));
+    backdrop-filter: blur(var(--SmartThemeBlurStrength, 8px));
+    -webkit-backdrop-filter: blur(var(--SmartThemeBlurStrength, 8px));
+    box-shadow: 0 4px 24px var(--SmartThemeShadowColor, rgba(0, 0, 0, 0.5));
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 0.95em;
+}
+
+#botmemory_wandpanel .bm_wp_head {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+#botmemory_wandpanel .bm_wp_head b {
+    flex: 1;
+}
+
+#botmemory_wandpanel .bm_wp_row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+#botmemory_wandpanel .bm_wp_row input[type="number"] {
+    width: 4.5em;
+}
+
+#botmemory_wandpanel .bm_wp_profile {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px dashed var(--SmartThemeBorderColor, rgba(255, 255, 255, 0.2));
+}
+
+#botmemory_wandpanel .bm_wp_status {
+    opacity: 0.75;
+}
+
+#botmemory_wandpanel .menu_button {
+    margin-left: auto;
+}
+
+/* --- Кнопка перепаковки в списке файлов --- */
+.botmemory_file {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 6px;
+}
+
+.botmemory_file .bm_fname {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.botmemory_file .bm_repack {
+    opacity: 0.4;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.botmemory_file .bm_repack:hover {
+    opacity: 1;
+}
+
+/* --- Трекер-светофор --- */
+#bm_tracker {
+    position: fixed;
+    right: 6px;
+    bottom: 74px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    z-index: 500;
+    opacity: 0.5;
+    pointer-events: auto;
+}
+
+#bm_tracker:hover {
+    opacity: 1;
+}
+
+.bm_tdot {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 18px;
+    text-align: center;
+    color: #fff;
+    text-shadow: 0 0 2px rgba(0, 0, 0, 0.9);
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+    cursor: default;
+    user-select: none;
+}
+
+#bm_tdot_recall {
+    background: #2e7d32;
+    filter: grayscale(0.7) brightness(0.7);
+    transition: filter 0.3s, box-shadow 0.3s;
+}
+
+#bm_tdot_recall.lit {
+    filter: none;
+    box-shadow: 0 0 7px #66bb6a;
+}
+
+#bm_tdot_shelf {
+    background: #b28704;
+}
+
+#bm_tdot_total {
+    background: #546e7a;
+}
